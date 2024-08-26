@@ -47,11 +47,7 @@
 
 3. **.env 파일 설정**
 
-   `.env` 파일에 발급받은 API 키와 Custom Search Engine ID를 다음과 같이 입력합니다:
-
-      GOOGLE_API_KEY=여기에_발급받은_API_키를_입력하세요
-      CX=여기에_발급받은_Custom_Search_Engine_ID를_입력하세요
-      VISION_API_KEY=여기에_발급받은_API_키를_입력하세요
+   `.env` 파일에 발급받은 API 키와 Custom Search Engine ID를 입력합니다.
 ---
 
 ### 기여
@@ -61,4 +57,11 @@
 2. 포크된 레포지토리에서 자유롭게 코드를 수정합니다.
 3. [해당 레포지토리에 PR을 남깁니다.](https://github.com/12302a/DFdetecter/pulls)
 ---
+
+###문의사항 
+소스코드 사용에 관한 어려움이 있으신가요? [인스타그램](https://www.instagram.com/12302a_?igsh=MWgxNzZ6eWhmMmVrcw==)에 남겨주세요!
+---
+
 ## 버그제보 받습니다. [이슈](https://github.com/12302a/DFdetecter/issues) 남겨주세요!
+
+
