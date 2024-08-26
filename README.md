@@ -23,8 +23,8 @@
 ### 기여
 기여는 자유입니다.
 #### 기여 방법
-1. [해당 레포지토리를 포크](https://github.com/12302a/DFdetecter/makead/fork)합니다.
+1. [해당 레포지토리를 포크](https://github.com/12302a/DFdetecter/fork)합니다.
 2. 포크된 레포지토리에서 자유롭게 코드를 수정합니다.
-3. [해당 레포지토리에 PR을 남깁니다.](https://github.com/12302a/DFdetecter/makead/pulls)
+3. [해당 레포지토리에 PR을 남깁니다.](https://github.com/12302a/DFdetecter/pulls)
 ---
-## 버그제보 받습니다. [이슈](https://github.com/12302a/DFdetecter/makead/issues) 남겨주세요!
+## 버그제보 받습니다. [이슈](https://github.com/12302a/DFdetecter/issues) 남겨주세요!
