@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFdetecter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .image-wrapper {
+            margin: 10px 0;
+            position: relative;
+            display: inline-block;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .image-link {
+            display: block;
+            color: #007bff;
+            font-size: 12px;
+            text-decoration: none;
+            margin-top: 5px;
+        }
+        .image-link:hover {
+            text-decoration: underline;
+        }
+        .no-results {
+            color: #1aa453;
+            font-weight: bold;
+        }
+        .result {
+            color: #c91b1b;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .image-source {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .image-source a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .image-source a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DFdetecter</h1>
+        <h3>본인이 아닌 타인의 이름을 기재하거나 본 서비스를 통해 검색된 결과를 유출확인의 목적이 아닌 악의적 목적으로 이용할 경우 대한민국 형법에 의해 처벌받습니다. 해당 행위에 대한 본 서비스사의 책임은 없습니다.</h3>
+        <input type="text" id="query" placeholder="검색 대상을 기재하십시오.">
+        
+        <button onclick="searchImages()">검색 시작</button>
+        <div class="results" id="results">
+            
+            <!-- Results will be displayed here -->
+        </div>
+        <div class="no-results" id="no-results" style="display: none;">
+            제공된 정보에 일치하는 사진이 없습니다. 본 서비스 기준 귀하의 정보유출을 확인할 수 없습니다.
+            <h6>그러나 본 서비스는 참고용이므로 유출이 의심될 경우 대한민국 사법기관에 즉시 도움을 요청하세요.</h6>
+        </div>
+        <div class="result" id="result-message" style="display: none;">
+            제공된 정보에 해당하는 정보유출이 발견되었습니다. 본인의 정보와 비교 후 일치 시 사법기관에 즉시 신고하세요. 정보가 필요할 경우 <a href="mailto:12302a@12302a.xyz">12302a@12302a.xyz</a>로 연락하세요.
+        </div>
+        <div class="image-source">
+            <p>이미지 제공 사이트:</p>
+            <ul>
+                <li><a href="https://www.google.com/search" target="_blank">Google 이미지 검색</a></li>
+                <!-- 다른 이미지 제공 사이트가 있다면 여기에 추가 -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        async function searchImages() {
+            const query = document.getElementById('query').value;
+
+            if (!query) {
+                alert('검색정보 미입력 감지');
+                return;
+            }
+
+            // 검색 진행중 알림 표시
+            alert('검색 진행중입니다. 구글 전역을 조회하고 있습니다. 최대 1분가량 소요됩니다.');
+
+            try {
+                const response = await fetch('/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                const data = await response.json();
+                
+                const resultsDiv = document.getElementById('results');
+                const noResultsDiv = document.getElementById('no-results');
+                const resultMessageDiv = document.getElementById('result-message');
+                
+                resultsDiv.innerHTML = '';
+                noResultsDiv.style.display = 'none';
+                resultMessageDiv.style.display = 'none';
+                
+                if (data.images.length === 0) {
+                    noResultsDiv.style.display = 'block';
+                } else {
+                    resultMessageDiv.style.display = 'block';
+                    data.images.forEach(img => {
+                        const imageWrapper = document.createElement('div');
+                        imageWrapper.className = 'image-wrapper';
+
+                        const imgElement = document.createElement('img');
+                        imgElement.src = img.url;
+                        imgElement.alt = 'Search result';
+
+                        const linkElement = document.createElement('a');
+                        linkElement.href = img.pageUrl;
+                        linkElement.target = '_blank';
+                        linkElement.className = 'image-link';
+                        linkElement.textContent = 'Image Source';
+
+                        imageWrapper.appendChild(imgElement);
+                        imageWrapper.appendChild(linkElement);
+                        resultsDiv.appendChild(imageWrapper);
+                    });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('검색 도중 알 수 없는 오류 발생');
+            }
+        }
+    </script>
+</body>
+</html>
