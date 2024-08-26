@@ -1,10 +1,12 @@
 # DFdetecter
 당신의 사진변조를 찾아냅니다.
+<span style="color: red;">**본 서비스는 맹신할만큼의 정확성을 가지고 있지 않습니다. 다양한 신뢰 가능한 서비스를 통해 판단하시기 바랍니다. 오직 참조 목적으로만 이용해주세요.**</span>
+
 
 ## 사용법
 1. 이 코드를 clone 또는 fork 등으로 다운로드합니다.
 2. cmd에 ``pip install -r "requirements.txt"``를 사용해 모듈을 설치합니다.
-3. .env에서 키를 입력하세요. 키 입력방법은 하단에서 후술합니다.
+3. .env를 생성한후 googleAPI, googleCustomEngine값을 추가하세요. (googleAPI=) 그런다음 키를 입력하세요. 키 입력방법은 하단에서 후술합니다.
 4. python3 server.py를 터미널(cmd)에 입력합니다.
 
 ## 안내
