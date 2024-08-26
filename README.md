@@ -58,7 +58,7 @@
 3. [해당 레포지토리에 PR을 남깁니다.](https://github.com/12302a/DFdetecter/pulls)
 ---
 
-##문의사항 
+### 문의사항 
 소스코드 사용에 관한 어려움이 있으신가요? [인스타그램](https://www.instagram.com/12302a_?igsh=MWgxNzZ6eWhmMmVrcw==)에 남겨주세요!
 ---
 
