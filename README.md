@@ -49,9 +49,9 @@
 
    `.env` 파일에 발급받은 API 키와 Custom Search Engine ID를 다음과 같이 입력합니다:
 
-   GOOGLE_API_KEY=여기에_발급받은_API_키를_입력하세요
-   CX=여기에_발급받은_Custom_Search_Engine_ID를_입력하세요
-   VISION_API_KEY=여기에_발급받은_API_키를_입력하세요
+      GOOGLE_API_KEY=여기에_발급받은_API_키를_입력하세요
+      CX=여기에_발급받은_Custom_Search_Engine_ID를_입력하세요
+      VISION_API_KEY=여기에_발급받은_API_키를_입력하세요
 ---
 
 ### 기여
